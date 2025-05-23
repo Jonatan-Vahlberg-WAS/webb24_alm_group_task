@@ -14,7 +14,7 @@ describe("Accommodation Model", () => {
     const user = await User.build({ username: "testuser", email: "invalid-email" });
     // Validate: Check if the user instance is valid
     // rejects.toThrow() is used to check if the user instance is invalid
-    expect(user.validate()).rejects.toThrow();
+    await expect(user.validate()).rejects.toThrow();
   });
   
 });
