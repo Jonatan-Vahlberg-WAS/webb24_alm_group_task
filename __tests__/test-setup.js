@@ -7,7 +7,7 @@ require("../src/models/associations");
 
 beforeAll(async () => {
   await sequelize.sync({ force: true });
-
+})
 
 afterAll(async () => {
   await sequelize.close();
