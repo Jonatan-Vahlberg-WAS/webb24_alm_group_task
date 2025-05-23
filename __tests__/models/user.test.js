@@ -1,6 +1,6 @@
 const { User } = require("../test-setup");
 
-describe("User Model", () => {
+describe("Accommodation Model", () => {
   it("should create a user", async () => {
     const user = await User.create({ username: "testuser", email: "test@test.com" })
 

@@ -15,7 +15,7 @@ const Accommodation = sequelize.define("Accommodation", {
         allowNull: false,
     },
     zipcode: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
     rent: {
@@ -37,7 +37,7 @@ const Accommodation = sequelize.define("Accommodation", {
 });
 
 Accommodation.associate = (models) => {
-    Accommodation.belongsTo(models.Accommodation, {
+    Accommodation.belongsTo(models.User, {
         foreignKey: "userId",
         onDelete: "CASCADE",
     });
