@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
 const Accommodation = sequelize.define("Accommodation", {
-    adress: {
+    street: {
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -14,7 +14,7 @@ const Accommodation = sequelize.define("Accommodation", {
         type: DataTypes.STRING, 
         allowNull: false,
     },
-    zipcode: {
+    postalCode: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
@@ -28,7 +28,7 @@ const Accommodation = sequelize.define("Accommodation", {
     },
     userId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
             model: 'User',
             key: 'id',

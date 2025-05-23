@@ -10,7 +10,7 @@ const User = sequelize.define("User", {
   username: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,  
+    unique: true,
   },
   email: {
     type: DataTypes.STRING,
@@ -26,13 +26,15 @@ const User = sequelize.define("User", {
     validate: {
       isUrl: true,
     }
-  },
+  }
+
+},{
+
     timestamps: true,
-  
-});
+  })
 
 User.associate = (models) => {
-  User.hasMany(models.Accomodation, {
+  User.hasMany(models.Accommodation, {
     foreignKey: "userId",
     onDelete: "CASCADE",
   });
