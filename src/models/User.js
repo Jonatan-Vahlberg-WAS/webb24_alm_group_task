@@ -33,11 +33,5 @@ const User = sequelize.define("User", {
     timestamps: true,
   })
 
-User.associate = (models) => {
-  User.hasMany(models.Accommodation, {
-    foreignKey: "userId",
-    onDelete: "CASCADE",
-  });
-};
 
 module.exports = User;

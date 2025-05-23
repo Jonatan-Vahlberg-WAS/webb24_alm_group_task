@@ -1,10 +1,8 @@
 process.env.NODE_ENV = "test";
 const sequelize = require("../src/config/database");
-const Accommodation = require("../src/models/Accommodation"); 
 const User = require("../src/models/User");
-
-User.associate({ Accommodation });
-Accommodation.associate({ User });
+const Accommodation = require("../src/models/Accommodation"); 
+require("../src/models/associations");
 
 
 beforeAll(async () => {
