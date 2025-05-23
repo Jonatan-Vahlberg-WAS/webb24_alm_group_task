@@ -29,10 +29,6 @@ const Accommodation = sequelize.define("Accommodation", {
     userId: {
         type: DataTypes.INTEGER,
         allowNull: true,
-        references: {
-            model: 'User',
-            key: 'id',
-        }
     }
 });
 

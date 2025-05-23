@@ -8,7 +8,7 @@ describe("Accommodation tests", () => {
           username: "testuser",
           email: "test@example.com",
         });
-      try {
+
         const accommodation = await Accommodation.create({
           street: "shobaliba",       
           city: "Test City",
@@ -17,13 +17,11 @@ describe("Accommodation tests", () => {
           rent: 1000,
           room: 3,
           userId: user.id,
+
         });
         expect(user).toBeDefined();
         expect(accommodation).toBeDefined();
         
-      } catch (error) {
-        console.log("Error creating accommodation:", error);
-      }
     });
       
 });

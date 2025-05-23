@@ -1,12 +1,7 @@
 const User = require("./User");
 const Accommodation = require("./Accommodation");
 
+User.hasMany(Accommodation, { foreignKey: 'userId', onDelete: 'CASCADE' });
 
-// Accommodation.associate({ User });
-// User.associate({ Accommodation });
+Accommodation.belongsTo(User, { foreignKey: 'userId', onDelete: 'CASCADE' });
 
-// User.js
-User.hasMany(Accommodation, { foreignKey: 'userId' });
-
-// Accommodation.js
-Accommodation.belongsTo(User, { foreignKey: 'userId' });
