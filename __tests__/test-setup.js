@@ -1,11 +1,15 @@
-// test-setup.js
 process.env.NODE_ENV = "test";
 const sequelize = require("../src/config/database");
+// const Accommodation = require("../src/models/Accommodation"); 
 const User = require("../src/models/User");
-// TODO: Add Accomodation model
 
 beforeAll(async () => {
-  await sequelize.sync();
+  await sequelize.sync({ force: true });
+});
+
+afterEach(async () => {
+  await User.destroy({ where: {} });
+  // await Accommodation.destroy({ where: {} });
 });
 
 afterAll(async () => {

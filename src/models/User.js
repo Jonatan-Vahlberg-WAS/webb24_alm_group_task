@@ -16,12 +16,13 @@ const User = sequelize.define("User", {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true,
-    vaildate: {
+    validate: {
       isEmail: true,
     }
   },
   profilePic: {
     type: DataTypes.STRING,
+    allowNull: true,
     validate: {
       isUrl: true,
     }

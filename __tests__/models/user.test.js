@@ -1,4 +1,7 @@
-const { User } = require("../test-setup");
+const { User } = require("../test-setup.js");
+const { UniqueConstraintError } = require("sequelize");
+
+
 
 describe("User Model", () => {
   it("should create a user", async () => {
@@ -14,23 +17,23 @@ describe("User Model", () => {
     const user = await User.build({ username: "testuser", email: "invalid-email" });
     // Validate: Check if the user instance is valid
     // rejects.toThrow() is used to check if the user instance is invalid
-    await expect(user.validate()).rejects.toThrow();
+    expect(user.validate()).rejects.toThrow();
   });
-  
-});
 
-it("should not allow users with the same username", async () => {
-  await User.create({username: "user", email: "user1@test.com"});
+  it("should not allow users with the same username", async () => {
+    await User.create({ username: "user", email: "user1@test.com" });
 
-  await expect(
-    User.create({username: "user", email: "user2@test.com"})
-  ).rejects.toThrow(/unique/i);
-});
+    await expect(
+      User.create({ username: "user", email: "user2@test.com" })
+    ).rejects.toThrow(UniqueConstraintError);
+  });
 
-it("should not allow duplicate email adresses", async () => {
-  await User.create({ username: "user123", email: "unique_email@test.com" });
+  it("should not allow duplicate email adresses", async () => {
+    await User.create({ username: "user123", email: "unique_email@test.com" });
 
-  await expect(
-    User.create({ username: "user1234", email: "unique_email@test.com"})
-  ).rejects.toThrow(/unique/i);
+    await expect(
+      User.create({ username: "user1234", email: "unique_email@test.com" })
+    ).rejects.toThrow(UniqueConstraintError);
+  });
+
 });
